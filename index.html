@@ -4,34 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Web Programming - Week 2 Exercise</title>
+    <title>Introduction to Web Programming - Week 3 Exercise</title>
     <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <table id="table-main">
-      <thead id="table-header">
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Admin</th>
-          <th>Image</th>
-        </tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
-    <button id="empty-table">Empty Table</button>
-    <form enctype="multipart/form-data">
-      <label for="uname">Username:</label><br />
-      <input type="text" id="input-username" name="username" required /><br />
-      <label for="email">Email:</label><br />
-      <input type="email" id="input-email" name="email" required />
-      <br />
-      <input type="checkbox" id="input-admin" name="admin" />
-      <label for="admin"> Am I admin?</label><br />
-      <input type="file" id="input-image" name="image" accept="image/*" />
-      <label for="image">Choose image to upload</label>
-      <br />
-      <input type="submit" value="Submit" id="submit-data" />
-    </form>
+    <h1>Municipality employment statistics in Finland</h1>
+    <div class="center">
+      <table>
+        <thead>
+          <th>Municipality</th>
+          <th>Population</th>
+          <th>Employment</th>
+          <th>Employment-%</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </body>
 </html>
