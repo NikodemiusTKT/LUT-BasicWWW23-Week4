@@ -30,7 +30,7 @@ function fillTableWithData(munPopData, employData) {
     const curEmp = employment[index];
     const employRate = curEmp / curPop;
     const roundedEmployRate = (employRate * 100).toFixed(2);
-    let tRow = createTableRowElem(mun, curPop, curEmp, roundedEmployRate);
+    let tRow = createTableRowElem(mun, curPop, curEmp, `${roundedEmployRate}%`);
     if (employRate > 0.45) tRow.style.backgroundColor = '#abffbd';
     if (employRate < 0.25) tRow.style.backgroundColor = '#ff9e9e';
     fragment.appendChild(tRow);
