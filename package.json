@@ -1,11 +1,11 @@
 {
   "name": "lut-basicwww23-week3",
   "version": "1.0.0",
-  "description": "Week 3 exercise for LUT Introduction Web Programming course.",
-  "main": "script.js",
+  "description": "Week 3 exercise for LUT Introduction to Web Programming course.",
+  "source": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -13,9 +13,11 @@
   },
   "keywords": [
     "lut",
+    "university",
     "web",
     "course",
-    "exercise"
+    "exercise",
+    "assignment"
   ],
   "author": "Teemu Tanninen",
   "license": "ISC",
