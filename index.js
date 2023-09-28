@@ -35,7 +35,7 @@ function fillDomWithTvShows(showData) {
     const showElem = createShowElem(img, title, summary);
     fragment.append(showElem);
   });
-  document.querySelector('#show-container').replaceChildren(fragment);
+  document.querySelector('.show-container').replaceChildren(fragment);
 }
 
 function createShowElem(imgSrc, showTitle, showSummary) {
