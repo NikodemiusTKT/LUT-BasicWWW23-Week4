@@ -1,14 +1,14 @@
+'use strict';
+
 window.onload = async () => {
-  const municipalityDataUrl =
-    'https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff';
-  const employmentDataURL =
-    'https://statfin.stat.fi/PxWeb/sq/5e288b40-f8c8-4f1e-b3b0-61b86ce5c065';
-  const munPopData = await fetchJsonData(municipalityDataUrl);
-  const employData = await fetchJsonData(employmentDataURL);
-    fillTableWithData(munPopData, employData);
+  let url = new URL('https://api.tvmaze.com/search/shows?');
+  const params = { q: 'friends' };
+  const tvShowData = await fetchJsonData(url, params);
+  fillTableWithData(tvShowData);
 };
 
-async function fetchJsonData(url) {
+async function fetchJsonData(url, params) {
+  url.search = new URLSearchParams(params).toString();
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -26,30 +26,34 @@ async function fetchJsonData(url) {
   }
 }
 
-function fillTableWithData(munPopData, employData) {
-  const municipality = munPopData.dataset.dimension.Alue.category.label;
-  const population = munPopData.dataset.value;
-  const employment = employData.dataset.value;
+function fillTableWithData(showData) {
   let tRowArray = new Array();
-  Object.values(municipality).forEach((mun, index) => {
-    const curPop = population[index];
-    const curEmp = employment[index];
-    const employRate = curEmp / curPop;
-    const roundedEmployRate = (employRate * 100).toFixed(2);
-    let tRow = createTableRowElem(mun, curPop, curEmp, `${roundedEmployRate}%`);
-    if (employRate > 0.45) tRow.style.backgroundColor = '#abffbd';
-    else if (employRate < 0.25) tRow.style.backgroundColor = '#ff9e9e';
+  // console.log(key);
+  Object.values(showData).forEach((obj, index) => {
+    console.log(obj.show.name);
+    console.log(obj.show.summary);
+    const title = obj.show.name;
+    const summary = obj.show.summary;
+    const img = obj.show?.image;
+    let tRow = createShowElem(img, title, summary);
     tRowArray.push(tRow);
   });
-  document.querySelector('tbody').append(...tRowArray);
+  document.querySelector('#show-container').append(...tRowArray);
 }
 
-function createTableRowElem(...textArgs) {
-  let tRow = document.createElement('tr');
-  for (let arg of textArgs) {
-    let tCol = document.createElement('td');
-    tCol.innerText = arg;
-    tRow.append(tCol);
-  }
-  return tRow;
+function createShowElem(img, showTitle, showSummary) {
+  const imgElem =
+    img !== null || img !== '' ? `<img src=${img.medium}/>` : null;
+  let html = `
+  <div class="show-data"> 
+  ${imgElem}
+    <div class="show-info"> 
+        <h1>${showTitle}</h1> 
+        ${showSummary} 
+    </div> 
+  </div> `;
+  let temp = document.createElement('template');
+  html = html.trim(); // Never return a space text node as a result
+  temp.innerHTML = html;
+  return temp.content.firstChild;
 }

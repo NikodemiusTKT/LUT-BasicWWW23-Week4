@@ -1,12 +1,12 @@
-# LUT-BasicWWW23-Week3
+# LUT-BasicWWW23-Week4
 
-This the 3rd weekly assignment for the Introduction to Web Programming LUT University course.
+This the 4th weekly assignment for the Introduction to Web Programming LUT University course.
 
 ## Instructions
 
 Clone this git repository
 
-`git clone https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week3`
+`git clone https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week4`
 
 Change directory to the newly cloned project
 
