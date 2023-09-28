@@ -7,10 +7,11 @@ window.onload = () => {
   });
 };
 
-async function fetchJsonData(url, search) {
-  let queryUrl = encodeURI(url + '?q=' + search);
+async function fetchJsonData(url) {
+  // let queryUrl = encodeURI(url + '?q=' + search);
+  // console.log(url);
   try {
-    const response = await fetch(queryUrl);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
@@ -70,8 +71,10 @@ function createShowElem(imgSrc, showTitle, showSummary) {
 }
 
 async function submitFormData() {
-  const url = 'https://api.tvmaze.com/search/shows';
+  let url = 'https://api.tvmaze.com/search/shows';
   const input = document.querySelector('#input-show').value;
-  const tvShowData = await fetchJsonData(url, input);
+  const queryUrl = `${url}?q=${input}`;
+  if (input === '') return;
+  const tvShowData = await fetchJsonData(queryUrl);
   fillDomWithTvShows(tvShowData);
 }
