@@ -1,10 +1,10 @@
 'use strict';
 
-window.onload = async () => {
-  let url = new URL('https://api.tvmaze.com/search/shows?');
-  const params = { q: 'friends' };
-  const tvShowData = await fetchJsonData(url, params);
-  fillTableWithData(tvShowData);
+window.onload = () => {
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await submitFormData();
+  });
 };
 
 async function fetchJsonData(url, params) {
@@ -26,7 +26,7 @@ async function fetchJsonData(url, params) {
   }
 }
 
-function fillTableWithData(showData) {
+function fillDomWithTvShows(showData) {
   let fragment = document.createDocumentFragment();
   Object.values(showData).forEach((obj) => {
     const title = obj.show?.name;
@@ -35,7 +35,7 @@ function fillTableWithData(showData) {
     const showElem = createShowElem(img, title, summary);
     fragment.append(showElem);
   });
-  document.querySelector('#show-container').append(fragment);
+  document.querySelector('#show-container').replaceChildren(fragment);
 }
 
 function createShowElem(imgSrc, showTitle, showSummary) {
@@ -67,4 +67,12 @@ function createShowElem(imgSrc, showTitle, showSummary) {
   divData.append(divInfo);
 
   return divData;
+}
+
+async function submitFormData() {
+  let url = new URL('https://api.tvmaze.com/search/shows?');
+  const input = document.querySelector('#input-show').value;
+  const params = { q: input };
+  const tvShowData = await fetchJsonData(url, params);
+  fillDomWithTvShows(tvShowData);
 }
