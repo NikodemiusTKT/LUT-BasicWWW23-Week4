@@ -22,4 +22,4 @@ Start the web server:
 
 Open browser at the following url:
 
-http://localhost:1234
+<http://localhost:1234>
