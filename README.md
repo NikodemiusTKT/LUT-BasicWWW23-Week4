@@ -10,13 +10,13 @@ Clone this git repository
 
 Change directory to the newly cloned project
 
-`cd LUT-BasicWWW23-Week3`
+`cd LUT-BasicWWW23-Week4`
 
 Install npm packages
 
 `npm install`
 
-Start the webserver:
+Start the web server:
 
 `npm run start`
 

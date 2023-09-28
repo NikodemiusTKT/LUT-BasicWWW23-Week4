@@ -27,33 +27,44 @@ async function fetchJsonData(url, params) {
 }
 
 function fillTableWithData(showData) {
-  let tRowArray = new Array();
-  // console.log(key);
-  Object.values(showData).forEach((obj, index) => {
-    console.log(obj.show.name);
-    console.log(obj.show.summary);
-    const title = obj.show.name;
-    const summary = obj.show.summary;
-    const img = obj.show?.image;
-    let tRow = createShowElem(img, title, summary);
-    tRowArray.push(tRow);
+  let fragment = document.createDocumentFragment();
+  Object.values(showData).forEach((obj) => {
+    const title = obj.show?.name;
+    const summary = obj.show?.summary;
+    const img = obj.show?.image?.medium;
+    const showElem = createShowElem(img, title, summary);
+    fragment.append(showElem);
   });
-  document.querySelector('#show-container').append(...tRowArray);
+  document.querySelector('#show-container').append(fragment);
 }
 
-function createShowElem(img, showTitle, showSummary) {
-  const imgElem =
-    img !== null || img !== '' ? `<img src=${img.medium}/>` : null;
-  let html = `
+function createShowElem(imgSrc, showTitle, showSummary) {
+  /*   
   <div class="show-data"> 
-  ${imgElem}
+    <img src="[show image medium]"> 
     <div class="show-info"> 
-        <h1>${showTitle}</h1> 
-        ${showSummary} 
+        <h1>[Show title]</h1> 
+        <p>[Show summary]</p> 
     </div> 
-  </div> `;
-  let temp = document.createElement('template');
-  html = html.trim(); // Never return a space text node as a result
-  temp.innerHTML = html;
-  return temp.content.firstChild;
+  </div>  
+  */
+  let divData = document.createElement('div');
+  divData.className = 'show-data';
+
+  let divInfo = document.createElement('div');
+  divInfo.className = 'show-info';
+
+  let imgElem = document.createElement('img');
+  imgElem.src = imgSrc ?? '';
+
+  let header = document.createElement('h1');
+  header.textContent = showTitle;
+
+  divInfo.append(header);
+  divInfo.insertAdjacentHTML('beforeend', showSummary);
+
+  divData.prepend(imgElem);
+  divData.append(divInfo);
+
+  return divData;
 }
