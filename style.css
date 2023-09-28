@@ -38,3 +38,13 @@ body {
     padding: 10px;
   }
 }
+
+@media screen and (max-width: 800px) {
+  img {
+    margin: auto;
+  }
+  .show-info p {
+    text-align: center;
+    padding: 10px;
+  }
+}

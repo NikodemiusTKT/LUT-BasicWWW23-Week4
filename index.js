@@ -71,11 +71,10 @@ function createShowElem(imgSrc, showTitle, showSummary) {
 }
 
 async function submitFormData() {
-  const url = new URL('https://api.tvmaze.com/search/shows');
+  const url = 'https://api.tvmaze.com/search/shows';
   const input = document.querySelector('#input-show').value;
-  const params = new URLSearchParams({ q: input });
-  url.search = params.toString();
+  const queryUrl = `${url}?q=${input}`;
   if (input === '') return;
-  const tvShowData = await fetchJsonData(url);
+  const tvShowData = await fetchJsonData(queryUrl);
   fillDomWithTvShows(tvShowData);
 }
