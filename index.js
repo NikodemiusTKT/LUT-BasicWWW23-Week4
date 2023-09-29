@@ -8,8 +8,6 @@ window.onload = () => {
 };
 
 async function fetchJsonData(url) {
-  // let queryUrl = encodeURI(url + '?q=' + search);
-  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -71,9 +69,9 @@ function createShowElem(imgSrc, showTitle, showSummary) {
 }
 
 async function submitFormData() {
-  const url = 'https://api.tvmaze.com/search/shows';
+  const baseUrl = 'https://api.tvmaze.com/search/shows';
   const input = document.querySelector('#input-show').value;
-  const queryUrl = `${url}?q=${input}`;
+  const queryUrl = `${baseUrl}?q=${input}`;
   if (input === '') return;
   const tvShowData = await fetchJsonData(queryUrl);
   fillDomWithTvShows(tvShowData);
