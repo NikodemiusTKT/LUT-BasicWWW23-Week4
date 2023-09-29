@@ -1,7 +1,7 @@
 {
-  "name": "lut-basicwww23-week3",
+  "name": "lut-basicwww23-week4",
   "version": "1.0.0",
-  "description": "Week 3 exercise for LUT Introduction to Web Programming course.",
+  "description": "Week 4 exercise for LUT Introduction to Web Programming course.",
   "source": "index.html",
   "scripts": {
     "start": "parcel",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week3.git"
+    "url": "git+https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week4.git"
   },
   "keywords": [
     "lut",
@@ -22,9 +22,9 @@
   "author": "Teemu Tanninen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week3/issues"
+    "url": "https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week4/issues"
   },
-  "homepage": "https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week3#readme",
+  "homepage": "https://github.com/NikodemiusTKT/LUT-BasicWWW23-Week4#readme",
   "devDependencies": {
     "parcel": "^2.9.3"
   }
