@@ -74,5 +74,6 @@ async function submitFormData() {
   const queryUrl = `${baseUrl}?q=${input}`;
   if (input === '') return;
   const tvShowData = await fetchJsonData(queryUrl);
+  if (!tvShowData || tvShowData.length === 0) return;
   fillDomWithTvShows(tvShowData);
 }
